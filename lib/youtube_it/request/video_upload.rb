@@ -746,13 +746,6 @@ class YouTubeIt
 
       def yt_session(url = nil)
         Faraday.new(:url => (url ? url : base_url), :ssl => {:verify => false}) do |builder|
-          if @access_token
-            if @config_token
-              builder.use FaradayMiddleware::YoutubeOAuth, @config_token
-            else
-              builder.use FaradayMiddleware::YoutubeOAuth2, @access_token
-            end
-          end
           builder.use FaradayMiddleware::YoutubeAuthHeader, authorization_headers
           builder.use Faraday::Response::YouTubeIt
           builder.adapter Faraday.default_adapter

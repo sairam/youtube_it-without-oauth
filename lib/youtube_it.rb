@@ -4,8 +4,6 @@ require 'net/https'
 require 'digest/md5'
 require 'nokogiri'
 require 'builder'
-require 'oauth'
-require 'oauth2'
 require 'faraday'
 
 class YouTubeIt
@@ -87,8 +85,6 @@ end
   request/remote_file
   response/video_search
   middleware/faraday_authheader.rb
-  middleware/faraday_oauth.rb
-  middleware/faraday_oauth2.rb
   middleware/faraday_youtubeit.rb
   chain_io
 ).each{|m| require File.dirname(__FILE__) + '/youtube_it/' + m }
